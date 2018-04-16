@@ -92,13 +92,13 @@ def compare_and_show(unknown_image):
             if True in result and not training_set[entry_titlize]["image_displayed"]:
                 
                 show_face_at_location(unknown_image, count)
-                training_set[entry_titlize]["image_displayed"] = True
+                # training_set[entry_titlize]["image_displayed"] = True
 
                 if not training_set[entry_titlize]["greeted"]:
                     greetings = greeting_list[random.randint(0,total_greetings)]
                     os.system(
                         "say 'Welcome {}, {}'".format(entry_titlize, greetings))
-                    training_set[entry_titlize]["greeted"] = True
+                    # training_set[entry_titlize]["greeted"] = True
 
             count = count + 1
 
@@ -118,16 +118,19 @@ def lets_go():
             small_frame = cv2.resize(frame, (0, 0), fx=0.99, fy=0.99)
 
             # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
-            rgb_small_frame = small_frame[:, :, ::-1]
+            # rgb_small_frame = small_frame[:, :, ::-1]
+            rgb_frame = frame[:, :, ::-1]
             
             if process_this_frame:
-                compare_and_show(rgb_small_frame)
+                # compare_and_show(rgb_small_frame)
+                compare_and_show(rgb_frame)
+
             
             # Hit 'q' on the keyboard to quit!
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             
-            # time.sleep(1)
+            time.sleep(1)
         finally:
             print("releasing video handler")
             video_capture.release()
