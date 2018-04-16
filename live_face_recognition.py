@@ -91,14 +91,14 @@ def compare_and_show(unknown_image):
             result = [result[0]]
             if True in result and not training_set[entry_titlize]["image_displayed"]:
                 
-                # show_face_at_location(unknown_image, count)
-                # training_set[entry_titlize]["image_displayed"] = True
+                show_face_at_location(unknown_image, count)
+                training_set[entry_titlize]["image_displayed"] = True
 
                 if not training_set[entry_titlize]["greeted"]:
                     greetings = greeting_list[random.randint(0,total_greetings)]
-                    # os.system(
-                    #     "say 'Welcome {}, {}'".format(entry_titlize, greetings))
-                    # training_set[entry_titlize]["greeted"] = True
+                    os.system(
+                        "say 'Welcome {}, {}'".format(entry_titlize, greetings))
+                    training_set[entry_titlize]["greeted"] = True
 
             count = count + 1
 
@@ -127,7 +127,7 @@ def lets_go():
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             
-            time.sleep(1)
+            # time.sleep(1)
         finally:
             print("releasing video handler")
             video_capture.release()
